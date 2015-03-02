@@ -1,6 +1,6 @@
 {
   "name": "gulp-recipe-sass",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Receipe for sass files compilation and watching",
   "main": "main.js",
   "repository": {
