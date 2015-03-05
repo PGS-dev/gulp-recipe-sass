@@ -2,6 +2,9 @@
 
 module.exports = function ($, config) {
     var _ = $.lodash;
+
+    $.utils.checkMandatory(config, ['sources.sass']);
+
     config.sass = _.defaults(config.sass || {}, {
         style: 'expanded',
         errLogToConsole: true,
@@ -12,8 +15,6 @@ module.exports = function ($, config) {
         sass: 'sass',
         watchSass: 'watch:sass'
     });
-
-    config.sources.sass = config.sources.sass || [];
 
     return config;
 };
