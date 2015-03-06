@@ -5,6 +5,10 @@ module.exports = function ($, config) {
 
     $.utils.checkMandatory(config, ['sources.sass']);
 
+    if(_.isUndefined(config.paths.app)) {
+        config.paths.app = 'app/';
+    }
+
     config.sass = _.defaults(config.sass || {}, {
         style: 'expanded',
         errLogToConsole: true,
