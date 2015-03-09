@@ -1,10 +1,7 @@
-# [gulp-recipe](https://github.com/PGS-dev/gulp-recipe-loader)-rev [![Dependency Status][depstat-image]][depstat-url]
+# [gulp-recipe](https://github.com/PGS-dev/gulp-recipe-loader)-sass [![Dependency Status][depstat-image]][depstat-url]
 [![NPM][npm-image]][npm-url]
 
-Recipe for distribution files reving using gulp-rev and gulp-rev-replace.
-
-**Note** that all rev trickery still applies. All your reved paths have to be referenced with paths relative to its bases.
-If your files are renamed but references are not replaced, you need to correct your base in sources.
+Recipe for sass files compilation and css transforms application.
 
 ## Task
 ### sass
