@@ -29,6 +29,16 @@ Partial file change triggers full project recompilation.
 
 Configure sass task
 
+### [Sources](https://github.com/PGS-dev/gulp-recipe-loader#sources-configuration-syntax)
+#### sources.sass
+> mandatory
+
+Source files for sass compiler. Accepts *.sass and *.scss.
+> example config:
+```javascript
+sources.sass = ['app/components/**/*.scss', 'app/*.scss'];
+```
+
 ### Paths
 #### paths.app
 > default: 'app/'
