@@ -51,6 +51,8 @@ module.exports = function ($, config, sources) {
      * @deps sass
      */
     $.gulp.task(config.tasks.watchSass, [config.tasks.sass], function () {
+        var fs = require('fs');
+
         var processCssPipe = $.utils.sequentialLazypipe($.utils.getPipes('devProcessCss'));
 
         var process = $.lazypipe()
@@ -67,11 +69,16 @@ module.exports = function ($, config, sources) {
                 $.utils.runSubtasks(config.tasks.sass);
             }
             else {
-                // run sass compilation only for changed non-partial file
-                var stream = $.through2.obj();
-                stream.push(vinyl);
-                stream.push(null); // end
-                stream.pipe(process());
+                if(vinyl.event === 'unlink') {
+                    fs.unlink(path.join(config.paths.tmp, path.relative(vinyl.base, vinyl.path).replace(/\.s(?:a|c)ss$/, '.css')));
+                }
+                else {
+                    // run sass compilation only for changed non-partial file
+                    var stream = $.through2.obj();
+                    stream.push(vinyl);
+                    stream.push(null); // end
+                    stream.pipe(process());
+                }
             }
         })();
     });
