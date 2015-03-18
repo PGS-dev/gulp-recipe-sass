@@ -24,5 +24,6 @@ module.exports = function ($, config) {
         watchSass: 'watch:sass'
     });
 
+    config.sources = _.pick(config.sources, 'sass');
     return config;
 };
