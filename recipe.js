@@ -34,14 +34,14 @@ module.exports = function ($, config, sources) {
      * @config paths.tmp temp folder location
      * @sequential devProcessCss runs css processors on compiled sass files
      */
-    $.gulp.task(config.tasks.sass, function () {
+    function sassTask() {
         var processCssPipe = $.utils.sequentialLazypipe($.utils.getPipes('devProcessCss'));
 
         return sassSource
             .pipe(processCssPipe)
             .pipe($.sourcemaps.write)
             .pipe($.gulp.dest, config.paths.tmp)();
-    });
+    }
 
     /**
      * Runs sass watcher, compile only changed main file or all files when partial is changed
@@ -50,7 +50,7 @@ module.exports = function ($, config, sources) {
      * @config tasks.watchSass
      * @deps sass
      */
-    $.gulp.task(config.tasks.watchSass, [config.tasks.sass], function () {
+    function watchSassTask() {
         var fs = require('fs');
 
         var processCssPipe = $.utils.sequentialLazypipe($.utils.getPipes('devProcessCss'));
@@ -81,7 +81,10 @@ module.exports = function ($, config, sources) {
                 }
             }
         })();
-    });
+    }
+
+    $.utils.maybeTask(config.tasks.sass, sassTask);
+    $.utils.maybeTask(config.tasks.watchSass, watchSassTask);
 
     return {
         /**
@@ -91,6 +94,7 @@ module.exports = function ($, config, sources) {
             assetSass: sassSource
         },
 
+        compile: config.tasks.sass,
         watch: config.tasks.watchSass
     };
 };
