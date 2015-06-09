@@ -18,7 +18,9 @@ module.exports = function ($, config, sources) {
     var _ = $.lodash;
 
     var sassProcess = $.lazypipe()
-        .pipe($.sass, config.sass);
+        .pipe(function () {
+          return $.sass(config.sass).on('error', $.sass.logError);
+        });
 
     var sassSource = $.lazypipe()
         .pipe(sources.sass)

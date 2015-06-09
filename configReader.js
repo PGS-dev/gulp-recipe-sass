@@ -15,7 +15,6 @@ module.exports = function ($, config) {
 
     config.sass = _.defaults(config.sass || {}, {
         style: 'expanded',
-        errLogToConsole: true,
         includePaths: [config.paths.app]
     });
 
