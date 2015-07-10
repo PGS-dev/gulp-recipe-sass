@@ -19,7 +19,7 @@ module.exports = function ($, config, sources) {
 
     var sassProcess = $.lazypipe()
         .pipe(function () {
-          return $.sass(config.sass).on('error', $.sass.logError);
+            return $.sass(config.sass).on('error', $.sass.logError);
         });
 
     var sassSource = $.lazypipe()
@@ -79,7 +79,9 @@ module.exports = function ($, config, sources) {
                     var stream = $.through2.obj();
                     stream.push(vinyl);
                     stream.push(null); // end
-                    stream.pipe(process());
+                    stream
+                        .pipe($.plumber(_.noop))
+                        .pipe(process());
                 }
             }
         })();
