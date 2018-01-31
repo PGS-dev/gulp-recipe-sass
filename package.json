@@ -1,6 +1,6 @@
 {
   "name": "gulp-recipe-sass",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Receipe for sass files compilation and watching",
   "main": "main.js",
   "repository": {
@@ -16,8 +16,8 @@
   "author": "PGS Front",
   "license": "ISC",
   "dependencies": {
-    "gulp-plumber": "^1.0.1",
-    "gulp-sass": "^2.0.1",
-    "gulp-sourcemaps": "^1.5.0"
+    "gulp-plumber": "^1.2.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.4"
   }
 }
